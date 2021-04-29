@@ -83,7 +83,7 @@ void render(struct slurp_output *output) {
         borderX = (b.x) * scale;
         textX = borderX + 8;
       } else {
-        borderX = (b.x + b.width - ((12 * 5) + 10)) * scale;
+        borderX = (b.x + b.width - ((12 * 5) + 24)) * scale;
         textX = borderX +8;
       }
       if(b.y < current_selection->anchor_y) {
@@ -98,7 +98,7 @@ void render(struct slurp_output *output) {
 
       set_source_u32(cairo, 0x4f4f4fFF);
       cairo_rectangle(cairo, borderX, borderY,
-                      ((12 * 5) + 6) * scale, (20 + 4) * scale);
+                      ((12 * 5) + 19) * scale, (20 + 4) * scale);
 
       cairo_fill(cairo);
 

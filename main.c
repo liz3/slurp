@@ -13,7 +13,7 @@
 #include "slurp.h"
 #include "render.h"
 
-#define BG_COLOR 0xFFFFFF40
+#define BG_COLOR 0x434c5e40
 #define BORDER_COLOR 0x000000FF
 #define SELECTION_COLOR 0x00000000
 

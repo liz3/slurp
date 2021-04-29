@@ -74,16 +74,44 @@ void render(struct slurp_output *output) {
 		cairo_stroke(cairo);
 
 		if (state->display_dimensions) {
+
+      int32_t textX = 0;
+      int32_t textY = 0;
+      int32_t borderX = 0;
+      int32_t borderY = 0;
+      if(b.x < current_selection->anchor_x) {
+        borderX = (b.x) * scale;
+        textX = borderX + 8;
+      } else {
+        borderX = (b.x + b.width - ((12 * 5) + 10)) * scale;
+        textX = borderX +8;
+      }
+      if(b.y < current_selection->anchor_y) {
+        borderY = (b.y - 30) * scale;
+        textY = borderY + 28;
+      } else {
+        borderY = (b.y + b.height + 10) * scale;
+        textY = borderY + 28;
+      }
+
+
+
+      set_source_u32(cairo, 0x4f4f4fFF);
+      cairo_rectangle(cairo, borderX, borderY,
+                      ((12 * 5) + 6) * scale, (20 + 4) * scale);
+
+      cairo_fill(cairo);
+
 			cairo_select_font_face(cairo, "Sans",
 					       CAIRO_FONT_SLANT_NORMAL,
 					       CAIRO_FONT_WEIGHT_NORMAL);
-			cairo_set_font_size(cairo, 14 * scale);
+			cairo_set_font_size(cairo, 13 * scale);
 			// buffer of 12 can hold selections up to 99999x99999
 			char dimensions[12];
 			snprintf(dimensions, sizeof(dimensions), "%ix%i",
 				 b.width, b.height);
-			cairo_move_to(cairo, (b.x + b.width + 10) * scale,
-				      (b.y + b.height + 20) * scale);
+      set_source_u32(cairo, 0xFFFFFFFF);
+			cairo_move_to(cairo, textX, textY);
 			cairo_show_text(cairo, dimensions);
 		}
 	}

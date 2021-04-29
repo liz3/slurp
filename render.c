@@ -73,7 +73,7 @@ void render(struct slurp_output *output) {
 		draw_rect(cairo, &b, state->colors.border, scale);
 		cairo_stroke(cairo);
 
-		if (state->display_dimensions) {
+//		if (state->display_dimensions) {
 
       int32_t textX = 0;
       int32_t textY = 0;
@@ -114,5 +114,5 @@ void render(struct slurp_output *output) {
 			cairo_move_to(cairo, textX, textY);
 			cairo_show_text(cairo, dimensions);
 		}
-	}
+//	}
 }
